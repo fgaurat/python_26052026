@@ -61,7 +61,9 @@ def mult2_item(i):
     return i*2
 
 # l2 = map(mult2_item,l)
-l2 = map(lambda i:i*2,l)
+# l2 = map(lambda i:i*2,l)
+lamb = lambda i:i*2
+l2 = map(lamb,l)
 
 
 l2 = list(l2)
@@ -78,3 +80,15 @@ a = 2
 l2 = list(map(lambda i:i*2,l))
 
 l2 = [i*2 for i in l] # comprehension list , liste par intention
+
+
+
+def f(**kwargs):
+    print(kwargs) # { 'a': 1, 'b': 2, 'c': 3 }
+    # {name: "Gaurat", firstname: "fred", age: 49}
+
+f(a=1,b=2,c=3)
+f(name="Gaurat",firstname="fred",age=49)
+
+
+print(list(filter(lambda x: x % 2 == 0, [1, 2, 3, 4, 5, 6])))

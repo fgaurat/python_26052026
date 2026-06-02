@@ -16,7 +16,7 @@ class CustomerDAO:
         self.connection.commit()
 
 
-    def find_all(self):
+    def find_all_old(self):
         cur = self.connection.cursor()
         sql = "SELECT * FROM customers_tbl"
         cur.execute(sql)
@@ -28,6 +28,15 @@ class CustomerDAO:
             customers.append(c)
         return customers
     
+    def find_all(self):
+        cur = self.connection.cursor()
+        sql = "SELECT * FROM customers_tbl"
+        cur.execute(sql)
+        # Map to customer object
+        data = cur.fetchall()
+        for d in data:
+            c = Customer(*d)
+            yield c    
 
     def __del__(self):
         self.connection.close()
